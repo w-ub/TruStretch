@@ -38,7 +38,7 @@ Third-Party Software
  https://www.nirsoft.net/utils/nircmd.html
 
 Created By Wub
-Discord: Breasts
+Discord: Breasts.
 Created on 7/6/2026
 Made With Visual Studio and the horrible help of AI (The Big GPT)
 
