@@ -1,0 +1,903 @@
+﻿<Window x:Class="TruStretch.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="TruStretch"
+        Height="500"
+        Width="360"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Background="Transparent">
+
+    <Window.Resources>
+
+
+        <!-- TOP WINDOW BUTTONS -->
+        <Style x:Key="RoundedButton"
+               TargetType="Button">
+
+            <Setter Property="Background"
+                    Value="#1A1A1A"/>
+
+            <Setter Property="Foreground"
+                    Value="White"/>
+
+            <Setter Property="BorderThickness"
+                    Value="0"/>
+
+            <Setter Property="Height"
+                    Value="32"/>
+
+            <Setter Property="Width"
+                    Value="32"/>
+
+
+            <Setter Property="RenderTransform">
+                <Setter.Value>
+                    <TranslateTransform Y="0"/>
+                </Setter.Value>
+            </Setter>
+
+
+            <Setter Property="RenderTransformOrigin"
+                    Value="0.5,0.5"/>
+
+
+            <Setter Property="Template">
+
+                <Setter.Value>
+
+                    <ControlTemplate TargetType="Button">
+
+                        <Border Background="{TemplateBinding Background}"
+                                CornerRadius="8">
+
+                            <ContentPresenter HorizontalAlignment="Center"
+                                              VerticalAlignment="Center"/>
+
+                        </Border>
+
+
+                    </ControlTemplate>
+
+                </Setter.Value>
+
+            </Setter>
+
+
+            <Style.Triggers>
+
+                <Trigger Property="IsMouseOver"
+                         Value="True">
+
+
+                    <Trigger.EnterActions>
+
+                        <BeginStoryboard>
+
+                            <Storyboard>
+
+                                <DoubleAnimation
+                                    Storyboard.TargetProperty="RenderTransform.(TranslateTransform.Y)"
+                                    To="-2"
+                                    Duration="0:0:0.15"/>
+
+                            </Storyboard>
+
+                        </BeginStoryboard>
+
+                    </Trigger.EnterActions>
+
+
+
+                    <Trigger.ExitActions>
+
+                        <BeginStoryboard>
+
+                            <Storyboard>
+
+                                <DoubleAnimation
+                                    Storyboard.TargetProperty="RenderTransform.(TranslateTransform.Y)"
+                                    To="0"
+                                    Duration="0:0:0.15"/>
+
+                            </Storyboard>
+
+                        </BeginStoryboard>
+
+                    </Trigger.ExitActions>
+
+
+                </Trigger>
+
+            </Style.Triggers>
+
+
+        </Style>
+
+
+
+
+
+        <!-- MAIN BUTTON ANIMATION -->
+        <Style x:Key="AnimatedButton"
+               TargetType="Button">
+
+
+            <Setter Property="Background"
+                    Value="#1A1A1A"/>
+
+            <Setter Property="Foreground"
+                    Value="White"/>
+
+            <Setter Property="BorderThickness"
+                    Value="0"/>
+
+
+            <Setter Property="RenderTransform">
+                <Setter.Value>
+                    <TranslateTransform Y="0"/>
+                </Setter.Value>
+            </Setter>
+
+
+            <Setter Property="RenderTransformOrigin"
+                    Value="0.5,0.5"/>
+
+
+            <Setter Property="Template">
+
+                <Setter.Value>
+
+                    <ControlTemplate TargetType="Button">
+
+                        <Border x:Name="ButtonBorder"
+                                Background="{TemplateBinding Background}"
+                                CornerRadius="8">
+
+
+                            <Border.Effect>
+
+                                <DropShadowEffect Color="Black"
+                                                  BlurRadius="0"
+                                                  ShadowDepth="0"
+                                                  Opacity="0"/>
+
+                            </Border.Effect>
+
+
+                            <ContentPresenter HorizontalAlignment="Center"
+                                              VerticalAlignment="Center"/>
+
+
+                        </Border>
+
+
+                        <ControlTemplate.Triggers>
+
+
+                            <Trigger Property="IsMouseOver"
+                                     Value="True">
+
+
+                                <Trigger.EnterActions>
+
+                                    <BeginStoryboard>
+
+                                        <Storyboard>
+
+
+                                            <DoubleAnimation
+                                                Storyboard.TargetProperty="RenderTransform.(TranslateTransform.Y)"
+                                                To="-3"
+                                                Duration="0:0:0.15"/>
+
+
+                                            <DoubleAnimation
+                                                Storyboard.TargetName="ButtonBorder"
+                                                Storyboard.TargetProperty="Effect.BlurRadius"
+                                                To="15"
+                                                Duration="0:0:0.15"/>
+
+
+                                            <DoubleAnimation
+                                                Storyboard.TargetName="ButtonBorder"
+                                                Storyboard.TargetProperty="Effect.Opacity"
+                                                To="0.6"
+                                                Duration="0:0:0.15"/>
+
+
+                                        </Storyboard>
+
+                                    </BeginStoryboard>
+
+                                </Trigger.EnterActions>
+
+
+                                <Trigger.ExitActions>
+
+                                    <BeginStoryboard>
+
+                                        <Storyboard>
+
+
+                                            <DoubleAnimation
+                                                Storyboard.TargetProperty="RenderTransform.(TranslateTransform.Y)"
+                                                To="0"
+                                                Duration="0:0:0.15"/>
+
+
+                                            <DoubleAnimation
+                                                Storyboard.TargetName="ButtonBorder"
+                                                Storyboard.TargetProperty="Effect.BlurRadius"
+                                                To="0"
+                                                Duration="0:0:0.15"/>
+
+
+                                            <DoubleAnimation
+                                                Storyboard.TargetName="ButtonBorder"
+                                                Storyboard.TargetProperty="Effect.Opacity"
+                                                To="0"
+                                                Duration="0:0:0.15"/>
+
+
+                                        </Storyboard>
+
+                                    </BeginStoryboard>
+
+                                </Trigger.ExitActions>
+
+
+                            </Trigger>
+
+
+                        </ControlTemplate.Triggers>
+
+
+                    </ControlTemplate>
+
+                </Setter.Value>
+
+            </Setter>
+
+
+        </Style>
+
+        <!-- TEXTBOX -->
+        <Style TargetType="TextBox">
+
+            <Setter Property="Background"
+                    Value="#1A1A1A"/>
+
+            <Setter Property="Foreground"
+                    Value="White"/>
+
+            <Setter Property="BorderBrush"
+                    Value="#333"/>
+
+            <Setter Property="Height"
+                    Value="30"/>
+
+        </Style>
+
+
+
+
+
+        <!-- COMBOBOX -->
+        <Style TargetType="ComboBox">
+
+            <Setter Property="FocusVisualStyle"
+                    Value="{x:Null}"/>
+
+            <Setter Property="Background"
+                    Value="#1A1A1A"/>
+
+            <Setter Property="Foreground"
+                    Value="White"/>
+
+            <Setter Property="BorderBrush"
+                    Value="#333"/>
+
+            <Setter Property="Height"
+                    Value="32"/>
+
+            <Setter Property="Padding"
+                    Value="0"/>
+
+
+            <Setter Property="Template">
+
+                <Setter.Value>
+
+                    <ControlTemplate TargetType="ComboBox">
+
+                        <Grid>
+
+
+                            <!-- MAIN COMBOBOX BACKGROUND -->
+                            <Border x:Name="ComboBorder"
+                                    Background="#1A1A1A"
+                                    BorderBrush="#333"
+                                    BorderThickness="1"
+                                    CornerRadius="8">
+
+
+                                <Border.Effect>
+
+                                    <DropShadowEffect Color="Black"
+                                                      BlurRadius="0"
+                                                      ShadowDepth="0"
+                                                      Opacity="0"/>
+
+                                </Border.Effect>
+
+
+                            </Border>
+
+
+
+                            <Grid>
+
+
+                                <Grid.ColumnDefinitions>
+
+                                    <ColumnDefinition Width="*"/>
+
+                                    <!-- Larger click area -->
+                                    <ColumnDefinition Width="60"/>
+
+                                </Grid.ColumnDefinitions>
+
+
+
+
+                                <!-- SELECTED TEXT -->
+
+                                <ContentPresenter Grid.Column="0"
+                                                  Margin="10,0,0,0"
+                                                  VerticalAlignment="Center"/>
+
+
+
+
+
+                                <!-- DROPDOWN BUTTON -->
+
+                                <ToggleButton Grid.Column="1"
+                                              Background="Transparent"
+                                              BorderThickness="0"
+                                              FocusVisualStyle="{x:Null}"
+                                              IsChecked="{Binding IsDropDownOpen,
+                                                  RelativeSource={RelativeSource TemplatedParent},
+                                                  Mode=TwoWay}">
+
+
+                                    <ToggleButton.Template>
+
+
+                                        <ControlTemplate TargetType="ToggleButton">
+
+
+                                            <Border Background="Transparent"
+                                                    CornerRadius="0,8,8,0">
+
+
+                                                <ContentPresenter HorizontalAlignment="Center"
+                                                                  VerticalAlignment="Center"/>
+
+
+                                            </Border>
+
+
+                                        </ControlTemplate>
+
+
+                                    </ToggleButton.Template>
+
+
+
+
+
+                                    <Path Data="M 0 0 L 5 5 L 10 0"
+                                          Stroke="#888"
+                                          StrokeThickness="1.6"
+                                          HorizontalAlignment="Center"
+                                          VerticalAlignment="Center"/>
+
+
+                                </ToggleButton>
+
+
+                            </Grid>
+
+
+
+
+
+                            <!-- DROPDOWN LIST -->
+
+                            <Popup IsOpen="{TemplateBinding IsDropDownOpen}"
+                                   Placement="Bottom"
+                                   AllowsTransparency="True">
+
+
+                                <Border Background="#1A1A1A"
+                                        BorderBrush="#333"
+                                        BorderThickness="1"
+                                        CornerRadius="8"
+                                        Margin="0,4,0,0">
+
+
+                                    <ScrollViewer MaxHeight="200">
+
+                                        <ItemsPresenter/>
+
+                                    </ScrollViewer>
+
+
+                                </Border>
+
+
+                            </Popup>
+
+
+
+
+                        </Grid>
+
+
+
+
+                        <ControlTemplate.Triggers>
+
+
+                            <!-- COMBOBOX HOVER SHADOW -->
+
+                            <Trigger Property="IsMouseOver"
+                                     Value="True">
+
+
+                                <Trigger.EnterActions>
+
+                                    <BeginStoryboard>
+
+                                        <Storyboard>
+
+
+                                            <DoubleAnimation
+    Storyboard.TargetName="ComboBorder"
+    Storyboard.TargetProperty="Effect.BlurRadius"
+    To="18"
+    Duration="0:0:0.15"/>
+
+
+                                            <DoubleAnimation
+    Storyboard.TargetName="ComboBorder"
+    Storyboard.TargetProperty="Effect.Opacity"
+    To="0.65"
+    Duration="0:0:0.15"/>
+
+
+                                        </Storyboard>
+
+
+                                    </BeginStoryboard>
+
+
+                                </Trigger.EnterActions>
+
+
+
+
+                                <Trigger.ExitActions>
+
+                                    <BeginStoryboard>
+
+                                        <Storyboard>
+
+
+                                            <DoubleAnimation
+                                                Storyboard.TargetName="ComboBorder"
+                                                Storyboard.TargetProperty="Effect.BlurRadius"
+                                                To="0"
+                                                Duration="0:0:0.15"/>
+
+
+                                            <DoubleAnimation
+                                                Storyboard.TargetName="ComboBorder"
+                                                Storyboard.TargetProperty="Effect.Opacity"
+                                                To="0"
+                                                Duration="0:0:0.15"/>
+
+
+                                        </Storyboard>
+
+
+                                    </BeginStoryboard>
+
+
+                                </Trigger.ExitActions>
+
+
+                            </Trigger>
+
+
+                        </ControlTemplate.Triggers>
+
+
+                    </ControlTemplate>
+
+
+                </Setter.Value>
+
+
+            </Setter>
+
+
+        </Style>
+
+
+
+
+
+        <!-- COMBOBOX ITEM -->
+
+        <Style TargetType="ComboBoxItem">
+
+
+            <Setter Property="FocusVisualStyle"
+                    Value="{x:Null}"/>
+
+            <Setter Property="Height"
+                    Value="32"/>
+
+            <Setter Property="Padding"
+                    Value="10,0"/>
+
+            <Setter Property="Background"
+                    Value="#1A1A1A"/>
+
+            <Setter Property="Foreground"
+                    Value="White"/>
+
+
+
+            <Setter Property="Template">
+
+
+                <Setter.Value>
+
+
+                    <ControlTemplate TargetType="ComboBoxItem">
+
+
+                        <Border x:Name="Bd"
+                                Background="{TemplateBinding Background}"
+                                Height="32"
+                                CornerRadius="6"
+                                Padding="10,0">
+
+
+                            <ContentPresenter VerticalAlignment="Center"/>
+
+
+                        </Border>
+
+
+
+
+                        <ControlTemplate.Triggers>
+
+
+                            <Trigger Property="IsHighlighted"
+                                     Value="True">
+
+
+                                <Setter TargetName="Bd"
+                                        Property="Background"
+                                        Value="#2A2A2A"/>
+
+
+                            </Trigger>
+
+
+
+                            <Trigger Property="IsSelected"
+                                     Value="True">
+
+
+                                <Setter TargetName="Bd"
+                                        Property="Background"
+                                        Value="#333333"/>
+
+
+                            </Trigger>
+
+
+                        </ControlTemplate.Triggers>
+
+
+                    </ControlTemplate>
+
+
+                </Setter.Value>
+
+
+            </Setter>
+
+
+        </Style>
+
+    </Window.Resources>
+
+
+
+    <Border CornerRadius="18"
+            Padding="18">
+
+
+        <Border.Background>
+
+
+            <LinearGradientBrush StartPoint="0,0"
+                                 EndPoint="1,1">
+
+
+                <GradientStop Color="#0A0A0A"/>
+
+                <GradientStop Color="#141414"
+                              Offset="1"/>
+
+
+            </LinearGradientBrush>
+
+
+        </Border.Background>
+
+
+
+
+        <Border.Effect>
+
+
+            <DropShadowEffect BlurRadius="25"
+                              ShadowDepth="0"
+                              Opacity="0.6"/>
+
+
+        </Border.Effect>
+
+
+
+
+
+        <Grid>
+
+
+            <Grid.RowDefinitions>
+
+
+                <RowDefinition Height="Auto"/>
+
+
+                <RowDefinition Height="*"/>
+
+
+            </Grid.RowDefinitions>
+
+
+
+
+
+            <!-- HEADER -->
+
+            <Grid Grid.Row="0"
+                  MouseLeftButtonDown="DragWindow">
+
+
+
+                <StackPanel>
+
+
+
+                    <TextBlock Text="TruStretch"
+                               Foreground="White"
+                               FontSize="20"
+                               FontWeight="Bold"/>
+
+
+
+
+                    <TextBlock x:Name="CurrentResText"
+                               Text="Current: N/A (Add a profile)"
+                               Foreground="#888"
+                               Margin="0,5,0,10"/>
+
+
+
+                </StackPanel>
+
+
+
+
+
+                <!-- WINDOW BUTTONS -->
+
+                <StackPanel Orientation="Horizontal"
+                            HorizontalAlignment="Right" Margin="0,-18,-6,10" Width="54">
+
+
+
+
+                    <Button Content="_"
+                            Style="{StaticResource RoundedButton}"
+                            Click="Minimize_Click" Height="23" Width="24"/>
+
+
+
+
+                    <Button Content="X"
+                            Style="{StaticResource RoundedButton}"
+                            Margin="6,0,0,0"
+                            Click="Close_Click" Height="23" Width="23"/>
+
+
+
+                </StackPanel>
+
+
+
+            </Grid>
+
+
+
+
+
+
+            <!-- BODY -->
+
+            <StackPanel Grid.Row="1">
+
+
+
+                <ComboBox x:Name="ProfileDropdown"
+                          Height="32"
+                          Text="Select Profile"/>
+
+
+
+
+
+                <TextBlock Text="Add Resolution"
+                           Foreground="#888"
+                           Margin="0,15,0,5"/>
+
+
+
+
+
+                <StackPanel Orientation="Horizontal">
+
+
+
+                    <TextBox x:Name="WidthBox"
+                             Width="70"/>
+
+
+
+                    <TextBlock Text="x"
+                               Foreground="#777"
+                               Margin="8,0"
+                               VerticalAlignment="Center"/>
+
+
+
+                    <TextBox x:Name="HeightBox"
+                             Width="70"/>
+
+
+
+                </StackPanel>
+
+
+
+
+
+
+
+                <Button Content="Add Profile"
+                        Style="{StaticResource AnimatedButton}"
+                        Height="32"
+                        Margin="0,10,0,0"
+                        Click="AddProfile_Click"/>
+
+
+
+
+
+
+                <Button Content="Delete Selected Profile"
+                        Style="{StaticResource AnimatedButton}"
+                        Height="32"
+                        Margin="0,6,0,0"
+                        Click="DeleteProfile_Click"/>
+
+
+
+
+
+
+                <TextBlock Text="Default Resolution (Fallback on launch)"
+                           Foreground="#888"
+                           Margin="0,15,0,5"/>
+
+
+
+
+
+
+
+                <StackPanel Orientation="Horizontal">
+
+
+
+                    <TextBox x:Name="DefaultWidthBox"
+                             Width="70"/>
+
+
+
+                    <TextBlock Text="x"
+                               Foreground="#777"
+                               Margin="8,0"
+                               VerticalAlignment="Center"/>
+
+
+
+                    <TextBox x:Name="DefaultHeightBox"
+                             Width="70"/>
+
+
+
+                </StackPanel>
+
+
+
+
+
+
+
+                <Button Content="Save Default Resolution"
+                        Style="{StaticResource AnimatedButton}"
+                        Height="32"
+                        Margin="0,10,0,0"
+                        Click="SaveDefault_Click"/>
+
+
+
+
+
+
+
+                <TextBlock Text="Tip: Default is the resolution you will return to when clicking the .exe again to revert back to your original / Default Resolution."
+                           Foreground="#666"
+                           FontSize="11"
+                           Margin="0,12,0,0"
+                           TextWrapping="Wrap"/>
+
+
+
+            </StackPanel>
+
+
+
+
+        </Grid>
+
+
+
+    </Border>
+
+
+
+</Window>
