@@ -1,4 +1,4 @@
-
+( This exe was made entirely with AI ***but works efficiently ;) )
 ⚠️ !!BEFORE FIRST USE!! ⚠️ 
  
 Before launching TruStretch.exe normally, create at least one Resolution Profile in the Settings GUI.
