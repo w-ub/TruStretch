@@ -1,8 +1,6 @@
 ( This exe was made entirely with AI ***but works efficiently ;)*** )
 
-⚠️ !!BEFORE FIRST USE!! ⚠️ 
- 
-Before launching TruStretch.exe normally, create at least one Resolution Profile in the Settings GUI.
+TruStretch is designed for fast resolution switching without opening Windows Display Settings. Launch TruStretch.exe normally to instantly switch between your Default Resolution and your selected Resolution Profile. No Windows menus, confirmation screens, or resolution revert prompts.
 
   - Settings GUI -
   Hold SHIFT while launching TruStretch.exe to open the Settings GUI.
@@ -19,10 +17,7 @@ Before launching TruStretch.exe normally, create at least one Resolution Profile
   Resolution you add must already exist as a supported resolution in Windows, your GPU driver, or be a custom resolution you've already created.
   You can verify if a resolution is available by opening Settings > Display and checking the Display Resolution list.
   
- TruStretch is designed for fast resolution switching without opening Windows Display Settings.
- Launch TruStretch.exe normally to instantly switch between your Default Resolution and your selected Resolution Profile.
- No Windows menus, confirmation screens, or resolution revert prompts.
-
+ 
  Requirements
  ------------------
  • Windows 10/11
