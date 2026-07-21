@@ -1,4 +1,4 @@
-( This exe was made entirely with AI ***but works efficiently ;)*** )
+
 
 TruStretch is designed for fast resolution switching without opening Windows Display Settings. Launch TruStretch.exe normally to instantly switch between your Default Resolution and your selected Resolution Profile. No Windows menus, confirmation screens, or resolution revert prompts.
 
